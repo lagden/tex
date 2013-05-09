@@ -25,3 +25,7 @@ _darcs
 .svn
 .project
 .env
+
+# preserve
+!js/vendor/jquery
+!!js/vendor/mootools
