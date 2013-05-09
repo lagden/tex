@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+@import "compass";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+
 @import "vars";
 
 // Optionally Import Everything
@@ -64,6 +68,44 @@
 // @import "compass-inuit/objects/stats";
 // @import "compass-inuit/objects/greybox";
 
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+    @include transition-duration(.8s);
+}
+
+.isotope {
+    @include transition-property(height, width);
+    .isotope-item {
+        @include transition-property(transform, opacity);
+    }
+}
+
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+    @include transition-duration(0s);
+}
+
+/* End: Recommended Isotope styles */
+
 
 html{
     font: 1em/1.5 Georgia, serif;
@@ -72,39 +114,54 @@ html{
 }
 
 .wrapper{
-    max-width: 560px;
-    padding: 0 24px;
+    width: 550px;
+    padding: 0;
     margin: 0 auto;
+    background-color: blue;
 }
 
-.nav{
-    li{
-        $quadrado: 112px;
-        min-width: $quadrado;
-        min-height: $quadrado;
-        line-height: $quadrado;
-        background-color: red;
-        text-align: center;
-        vertical-align: top;
-        display: block;
-        float: left;
-        &:hover{
-            $quadrado2: $quadrado * 2;
-            width: $quadrado2;
-            height: $quadrado2;
-            line-height: $quadrado2;
-        };
+.blocks{
+    // position: relative;
+}
+
+.block{
+    $margin: 5px;
+    $quadrado: 100px;
+    $quadrado2: $quadrado * 2;
+    $quadradoFix: $quadrado2 + ($margin * 2);
+    @include opacity(.5);
+    @include transition(all 0.5s ease !important);
+    margin: $margin;
+    min-width: $quadrado;
+    min-height: $quadrado;
+    line-height: $quadrado;
+    background-color: red;
+    text-align: center;
+    vertical-align: top;
+    display: block;
+    float: left;
+    z-index: 100;
+    &.varia{
+        width: $quadradoFix;
+        background-color: green;
+    }
+    &.large{
+        width: $quadradoFix;
+        height: $quadradoFix;
+        line-height: $quadradoFix;
+        z-index: 1000;
+    };
+    .close{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        visibility: hidden;
+        &.show{
+            visibility: visible;
+        }
     }
 }
 
 .footer{
     margin-bottom: 0;
-}
-
-*{
-    -webkit-transition: all 1s ;
-    -moz-transition: all 1s ;
-    -ms-transition: all 1s ;
-    -o-transition: all 1s ;
-    transition: all 1s ;
 }

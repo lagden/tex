@@ -10,26 +10,29 @@ module.exports = function(grunt) {
       },
       frameworks: {
         src: [
-          'js/vendor/mootools/*.js',
-          'components/jquery/jquery.js'
+            'js/vendor/mootools/*.js'
+          , 'components/jquery/jquery.js'
         ],
         dest: 'js/dist/frameworks.js'
       },
       others: {
         src: [
-          'js/vendor/greensock/src/uncompressed/plugins/CSSPlugin.js',
-          'js/vendor/greensock/src/uncompressed/plugins/ScrollToPlugin.js',
-          'js/vendor/greensock/src/uncompressed/plugins/easing/EasePack.js',
-          'js/vendor/greensock/src/uncompressed/TweenMax.js',
-          'js/vendor/greensock/src/uncompressed/jquery.gsap.js',
-          'components/jquery-placeholder/jquery.placeholder.js'
+            'js/vendor/greensock/src/uncompressed/plugins/CSSPlugin.js'
+          , 'js/vendor/greensock/src/uncompressed/plugins/ScrollToPlugin.js'
+          , 'js/vendor/greensock/src/uncompressed/plugins/easing/EasePack.js'
+          , 'js/vendor/greensock/src/uncompressed/TimelineMax.js'
+          , 'js/vendor/greensock/src/uncompressed/TweenMax.js'
+          , 'js/vendor/greensock/src/uncompressed/jquery.gsap.js'
+          , 'components/jquery-placeholder/jquery.placeholder.js'
+          , 'js/vendor/jquery/plugins/*.js'
+          , 'js/vendor/jquery/plugins/isotope/*.js'
         ],
         dest: 'js/dist/others.js'
       },
       app: {
         src: [
-          'js/plugins.js',
-          'js/main.js'
+            'js/plugins.js'
+          , 'js/main.js'
         ],
         dest: 'js/dist/base.js'
       }
@@ -51,7 +54,11 @@ module.exports = function(grunt) {
       },
       target: {
         files: {
-          'js/min/output.min.js': ['js/dist/frameworks.js', 'js/dist/others.js', 'js/dist/base.js']
+          'js/min/output.min.js': [
+              'js/dist/frameworks.js'
+            , 'js/dist/others.js'
+            , 'js/dist/base.js'
+          ]
         }
       }
     }
